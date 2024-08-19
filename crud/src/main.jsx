@@ -6,18 +6,18 @@ import { createContext } from 'react'
 import { BrowserRouter } from 'react-router-dom'
 import { store } from './store/store.jsx'
 import { Provider } from 'react-redux'
-
+import { Suspense } from 'react'
 
 const AuthContext = createContext()
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <AuthContext.Provider value={{}}>
+     <Suspense fallback="Loading">
     <BrowserRouter>
     <Provider store={store}>
      <App/>
      </Provider>
     </BrowserRouter>
-    </AuthContext.Provider>
+    </Suspense>
   </React.StrictMode>,
 )

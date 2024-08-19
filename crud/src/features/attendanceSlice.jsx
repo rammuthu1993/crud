@@ -1,6 +1,6 @@
 import React from 'react'
 import { createSlice } from '@reduxjs/toolkit'
-import { createAsyncThunk,createSelector } from '@reduxjs/toolkit'
+import { createAsyncThunk } from '@reduxjs/toolkit'
 import axios from 'axios'
 
 export const addAttendance = createAsyncThunk("addAttendance",async(data)=>{
@@ -55,8 +55,8 @@ export const deleteAttendance = createAsyncThunk("deleteAttendance",async(id)=>{
 const attendanceSlice = createSlice({
     name:"attendance",
     initialState:{
+        loading:false,
         empAttendance:[],
-        status:"idle",
         error:""
     },
     reducers:{
@@ -66,50 +66,50 @@ const attendanceSlice = createSlice({
     },
     extraReducers:(builder)=>{
          builder.addCase(addAttendance.pending,(state,action)=>{
-             state.status="loading"
+            state.loading = true
          })
 
          .addCase(addAttendance.fulfilled,(state,action)=>{
-            state.status = "succeeded"
+            state.loading = false           
             state.empAttendance.push(action.payload)
             console.log(action);
          })
 
          .addCase(addAttendance.rejected,(state,action)=>{
-            state.status = "failed"
+            state.loading = false
          })
          .addCase(fetchAttendance.pending,(state,action)=>{
-            state.status = "loading"
+            state.loading = true
          })
          .addCase(fetchAttendance.fulfilled,(state,action)=>{
-            state.status = "succeeded"
+            state.loading = false           
             state.empAttendance=action.payload
             console.log(action.payload);
          })
          .addCase(fetchAttendance.rejected,(state,action)=>{
-            state.status = "failed"
+            state.loading = false
          })
          .addCase(updateAttendance.pending,(state,action)=>{
-            state.status = "loading"
+            state.loading = true
          })
          .addCase(updateAttendance.fulfilled,(state,action)=>{
-            state.status = "succeeded"
+            state.loading = false           
             const updateIndex = state.empAttendance.findIndex(att=> att._id===action.payload._id)
             console.log(updateIndex);
             state.empAttendance[updateIndex] = action.payload
          })
          .addCase(updateAttendance.rejected,(state,action)=>{
-            state.status = "failed"
+            state.loading = false
          })
          .addCase(deleteAttendance.pending,(state,action)=>{
-            state.status = "loading"
+            state.loading = true
          })
          .addCase(deleteAttendance.fulfilled,(state,action)=>{
-            state.status = "succeeded"
+            state.loading = false           
             state.empAttendance = state.empAttendance.filter(att=> att._id!==action.payload._id)
          })
          .addCase(deleteAttendance.rejected,(state,action)=>{
-            state.status = "failed"
+            state.loading = false
          })
          
          return builder;

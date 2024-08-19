@@ -20,35 +20,150 @@
 .uxtransition{
     transition:.2s ease-in-out;
 }
+.hamburger{
+    display: inline-block;
+    cursor: pointer;
+}
 .bar1{
     width: 35px;
     height: 5px;
     margin-top: 5px;
     background-color: black;
+    transition:.4s ease-in-out;
 }
 .bar2{
     width: 35px;
     height: 5px;
     margin-top: 5px;
     background-color: black;
+    transition:.4s ease-in-out;
 }
 .bar3{
     width: 35px;
     height: 5px;
     margin-top: 5px;
     background-color: black;
+    transition:.4s ease-in-out;
 }
 .icon{
     transition: .4s;
 }
-.icon.bar1{
+.icon .bar1 {
 
      transform: translate(0px,10px) rotate(-45deg);
 }
-.icon.bar2{
+.icon .bar2 {
      opacity: 0;
      
 }
-.icon.bar3{
+.icon .bar3 {
     transform: translate(0px,-10px) rotate(45deg);
+}
+#calendar-main{
+    position: relative;
+    height: 400px;
+    text-align: center;
+    padding-top: 10px;
+}
+.align{
+position: relative;
+left: 17%;
+top: 50px;
+}
+.admin-logo{
+    width: 40px;
+    height: 40px;
+    border-radius: 100%;
+    background: dodgerblue;
+}
+.input-ani-init{
+   background-image: url('./imgs/search5.png');
+   background-position: initial;
+   background-repeat: no-repeat;
+   background-size:contain;
+}
+.input-ani-init:focus{
+   outline-color: dodgerblue;
+   box-shadow: 0px 0px 2px;
+}
+.dash-menu{
+    cursor: pointer;
+}
+.dash-menu:hover{
+    box-shadow: 1px 1px 1px rgba(184, 184, 184, 0.87);
+}
+#addcommon input:focus,select:focus,textarea:focus{
+    outline-color: dodgerblue;
+}
+#addcommon input{
+    padding:4px 0;
+}
+.admin{
+    width: 50px;
+    height: 50px;
+    border-radius: 100%;
+}
+.b-bottom{
+    border-bottom:2px; 
+
+}
+.gstbg{
+    background-color: rgba(196, 195, 195, 0.951);
+    font-weight: bold;
+}
+#tab_foot tr,th{
+    border-style: none;
+}
+#tab_foot td{
+    border: 1px solid black;
+}
+.width-small{
+    width: 7%;
+    transition: width .2s;
+}
+.width-normal{
+    width: 21%;
+    height: 100%;
+    transition: width .2s;
+    position: fixed;
+    top: 0;
+    left: 0;
+    overflow-y:scroll;
+}
+.width-high{
+    width: 93%;
+    transition: width .2s;
+}
+.width-formal{
+    width:79%;
+    transition: width .2s;
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+::-webkit-scrollbar{
+    width: 10px;
+    border-radius: 10px;
+}
+::-webkit-scrollbar-track{
+    background: #f1f1f1; 
+    box-shadow: inset 0 0 5px grey; 
+    border-radius: 10px;
+}
+::-webkit-scrollbar-thumb{
+    background: #888; 
+    border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover{
+    background: #555; 
+}
+.custom-border{
+    border-top-width: 5px;
+    border-top-color: black;
+}
+.line{
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(100px,auto));
+    column-gap: 20px;
+    row-gap: 20px;
 }

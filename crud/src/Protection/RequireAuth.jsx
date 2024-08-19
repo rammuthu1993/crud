@@ -3,10 +3,12 @@ import { useAuth } from './auth'
 import { all } from 'axios';
 import { Navigate, Outlet,useLocation } from 'react-router-dom';
 import { unAuthorized } from './unAuthorized';
+import { useEffect } from 'react';
 
 export const RequireAuth = ({allowedRoles}) => {
     const auth = useAuth()
     const location = useLocation()
+
     console.log(allowedRoles);
     console.log(auth.user);
     console.log(auth?.user==allowedRoles);
